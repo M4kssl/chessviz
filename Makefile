@@ -8,7 +8,7 @@ all: bin/main
 
 -include build/*.d
 
-bin/main: build/main.o build/board.o build/cmove.o
+bin/main: build/main.o build/board.o build/cmove.o build/figures.o
 	$(COMPILER) $(FLAGS) -o $@ $^ 
 
 build/main.o: src/main.c
