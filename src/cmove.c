@@ -1,5 +1,6 @@
 #include "cmove.h"
 #include "board.h"
+#include "figures.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -72,9 +73,30 @@ int Mcheck(char Board[8][8], char* s, char* white, char* black)
     y--;
     xt = 8 - xt;
     yt--;
-
-    Board[x][y] = ' ';
-    Board[xt][yt] = figw;
+    switch (figw) {
+    case 'P':
+        print = Pawnw(Board, x, y, xt, yt, mvw);
+        break;
+    case 'K':
+        print = Kingw(Board, x, y, xt, yt, mvw);
+        break;
+    case 'B':
+        print = Bishopw(Board, x, y, xt, yt, mvw);
+        break;
+    case 'Q':
+        print = Queenw(Board, x, y, xt, yt, mvw);
+        break;
+    case 'N':
+        print = Knightw(Board, x, y, xt, yt, mvw);
+        break;
+    case 'R':
+        print = Rookw(Board, x, y, xt, yt, mvw);
+        break;
+    }
+    if (print == 0) {
+        Board[x][y] = ' ';
+        Board[xt][yt] = figw;
+    }
 
     printf("from:%d %d to:%d %d\n", x, y, xt, yt);
     x = fxb - 48, y = fyb - 96, xt = txb - 48, yt = tyb - 96;
@@ -82,11 +104,31 @@ int Mcheck(char Board[8][8], char* s, char* white, char* black)
     y--;
     xt = 8 - xt;
     yt--;
-
-    printf("from:%d %d to:%d %d\n", x, y, xt, yt);
-    Board[x][y] = ' ';
-    Board[xt][yt] = figb;
-    PrintBoard(Board);
-
+    switch (figb) {
+    case 'p':
+        pr = Pawn(Board, x, y, xt, yt, mvb);
+        break;
+    case 'k':
+        pr = King(Board, x, y, xt, yt, mvb);
+        break;
+    case 'b':
+        pr = Bishop(Board, x, y, xt, yt, mvb);
+        break;
+    case 'q':
+        pr = Queen(Board, x, y, xt, yt, mvb);
+        break;
+    case 'n':
+        pr = Knight(Board, x, y, xt, yt, mvb);
+        break;
+    case 'r':
+        pr = Rook(Board, x, y, xt, yt, mvb);
+        break;
+    }
+    if (pr == 0 && print == 0) {
+        printf("from:%d %d to:%d %d\n", x, y, xt, yt);
+        Board[x][y] = ' ';
+        Board[xt][yt] = figb;
+        PrintBoard(Board);
+    }
     return 0;
 }

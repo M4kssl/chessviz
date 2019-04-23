@@ -2,6 +2,7 @@
 #define CMOVE_H
 
 #include "board.h"
+#include "figures.h"
 #include "stdlib.h"
 #include <stdio.h>
 #include <string.h>
