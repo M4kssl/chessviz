@@ -1,5 +1,5 @@
 #include "board.h"
-
+#include "cmove.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -22,6 +22,7 @@ int main(int argc, char* argv[])
         while (!feof(fp)) {
             char s[3], white[10], black[10];
             fscanf(fp, "%s %s %s", s, white, black);
+            Mcheck(Board, s, white, black);
         }
         break;
     default:
