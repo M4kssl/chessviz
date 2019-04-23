@@ -1,4 +1,5 @@
 #include "board.h"
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -16,22 +17,18 @@ int main(int argc, char* argv[])
 
     FILE* fp;
     switch (argc) {
-        FILE* input;
-        switch (argc) {
-        case 2:
-            input = fopen(argv[1], "a+");
-            while (!feof(input)) {
-                char sw[10], sb[10], str[2];
-                fscanf(input, "%s %s %s", str, sw, sb);
-            }
-            break;
-        default:
-            printf("ERROR");
-            return 1;
+    case 2:
+        fp = fopen(argv[1], "a+");
+        while (!feof(fp)) {
+            char s[3], white[10], black[10];
+            fscanf(fp, "%s %s %s", s, white, black);
         }
-
-        fclose(input);
-
-        PrintBoard(Board);
-        return 0;
+        break;
+    default:
+        printf("ERROR");
+        return 1;
     }
+    fclose(fp);
+    PrintBoard(Board);
+    return 0;
+}
