@@ -20,5 +20,9 @@ build/board.o: src/board.c
 build/cmove.o: src/cmove.c
 	$(COMPILER) $(FLAGS) -MMD -c -o $@ $<
 
+build/figures.o: src/figures.c
+	$(COMPILER) $(FLAGS) -MMD -c -o $@ $<
+
+
 clean:
 	rm build/*
