@@ -1,5 +1,6 @@
 #include "cmove.h"
 #include "board.h"
+#include "figures.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
