@@ -30,6 +30,5 @@ int main(int argc, char* argv[])
         return 1;
     }
     fclose(fp);
-    PrintBoard(Board);
     return 0;
 }
