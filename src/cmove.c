@@ -19,7 +19,7 @@ int Mcheck(char Board[8][8], char* s, char* white, char* black)
         fyw = white[1];
     }
 
-    if (white[2] < '1' || white[2] > '2') {
+    if (white[2] < '1' || white[2] > '8') {
         printf("Out of the board 2\n");
         return 0;
     } else {
@@ -98,7 +98,6 @@ int Mcheck(char Board[8][8], char* s, char* white, char* black)
         Board[xt][yt] = figw;
     }
 
-    printf("from:%d %d to:%d %d\n", x, y, xt, yt);
     x = fxb - 48, y = fyb - 96, xt = txb - 48, yt = tyb - 96;
     x = 8 - x;
     y--;
@@ -125,7 +124,7 @@ int Mcheck(char Board[8][8], char* s, char* white, char* black)
         break;
     }
     if (pr == 0 && print == 0) {
-        printf("from:%d %d to:%d %d\n", x, y, xt, yt);
+        printf("\n\n\n\n");
         Board[x][y] = ' ';
         Board[xt][yt] = figb;
         PrintBoard(Board);
