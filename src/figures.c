@@ -15,6 +15,10 @@ int Pawnw(char Board[8][8], int fx, int fy, int tx, int ty, char m)
         printf("\nError, wrong movement P, expected  -  \n");
         return 2;
     }
+    if (Board[tx][ty] != ' ' && m == '-') {
+        printf("\nError, wrong movement P, expected  x  \n");
+        return 4;
+    }
     if (Board[tx][ty] == 'K' || Board[tx][ty] == 'P' || Board[tx][ty] == 'Q'
         || Board[tx][ty] == 'N' || Board[tx][ty] == 'R'
         || Board[tx][ty] == 'B') {
@@ -33,6 +37,10 @@ int Kingw(char Board[8][8], int fx, int fy, int tx, int ty, char m)
     if (Board[tx][ty] == ' ' && m == 'x') {
         printf("\nError, wrong movement K, expected  -  \n");
         return 2;
+    }
+    if (Board[tx][ty] != ' ' && m == '-') {
+        printf("\nError, wrong movement K, expected  x  \n");
+        return 4;
     }
     if (Board[tx][ty] == 'K' || Board[tx][ty] == 'P' || Board[tx][ty] == 'Q'
         || Board[tx][ty] == 'N' || Board[tx][ty] == 'R'
@@ -53,6 +61,10 @@ int Rookw(char Board[8][8], int fx, int fy, int tx, int ty, char m)
         printf("\nError, wrong movement R, expected  -  \n");
         return 2;
     }
+    if (Board[tx][ty] != ' ' && m == '-') {
+        printf("\nError, wrong movement R, expected  x  \n");
+        return 4;
+    }
     if (Board[tx][ty] == 'K' || Board[tx][ty] == 'P' || Board[tx][ty] == 'Q'
         || Board[tx][ty] == 'N' || Board[tx][ty] == 'R'
         || Board[tx][ty] == 'B') {
@@ -70,6 +82,10 @@ int Queenw(char Board[8][8], int fx, int fy, int tx, int ty, char m)
     if (Board[tx][ty] == ' ' && m == 'x') {
         printf("\nError, wrong movement Q, expected  -  \n");
         return 2;
+    }
+    if (Board[tx][ty] != ' ' && m == '-') {
+        printf("\nError, wrong movement Q, expected  x  \n");
+        return 4;
     }
     if (Board[tx][ty] == 'K' || Board[tx][ty] == 'P' || Board[tx][ty] == 'Q'
         || Board[tx][ty] == 'N' || Board[tx][ty] == 'R'
@@ -89,6 +105,10 @@ int Bishopw(char Board[8][8], int fx, int fy, int tx, int ty, char m)
         printf("\nError, wrong movement B, expected  -  \n");
         return 2;
     }
+    if (Board[tx][ty] != ' ' && m == '-') {
+        printf("\nError, wrong movement B, expected  x  \n");
+        return 4;
+    }
     if (Board[tx][ty] == 'K' || Board[tx][ty] == 'P' || Board[tx][ty] == 'Q'
         || Board[tx][ty] == 'N' || Board[tx][ty] == 'R'
         || Board[tx][ty] == 'B') {
@@ -106,6 +126,10 @@ int Knightw(char Board[8][8], int fx, int fy, int tx, int ty, char m)
     if (Board[tx][ty] == ' ' && m == 'x') {
         printf("\nError, wrong movement N, expected  -  \n");
         return 2;
+    }
+    if (Board[tx][ty] != ' ' && m == '-') {
+        printf("\nError, wrong movement N, expected  x  \n");
+        return 4;
     }
     if (Board[tx][ty] == 'K' || Board[tx][ty] == 'P' || Board[tx][ty] == 'Q'
         || Board[tx][ty] == 'N' || Board[tx][ty] == 'R'
@@ -125,7 +149,11 @@ int Pawn(char Board[8][8], int fx, int fy, int tx, int ty, char m)
         printf("\nError, wrong movement p, expected  -  \n");
         return 2;
     }
-    if (Board[tx][ty] == 'k' || Board[tx][ty] == 'k' || Board[tx][ty] == 'q'
+    if (Board[tx][ty] != ' ' && m == '-') {
+        printf("\nError, wrong movement P, expected  x  \n");
+        return 4;
+    }
+    if (Board[tx][ty] == 'k' || Board[tx][ty] == 'p' || Board[tx][ty] == 'q'
         || Board[tx][ty] == 'n' || Board[tx][ty] == 'r'
         || Board[tx][ty] == 'b') {
         printf("\nError, wrong movement p, attacking teammate \n");
@@ -136,17 +164,21 @@ int Pawn(char Board[8][8], int fx, int fy, int tx, int ty, char m)
 int King(char Board[8][8], int fx, int fy, int tx, int ty, char m)
 {
     if (Board[fx][fy] != 'k') {
-        printf("\nError, wrong figure, expected p\n");
+        printf("\nError, wrong figure, expected k\n");
         return 1;
     }
     if (Board[tx][ty] == ' ' && m == 'x') {
-        printf("\nError, wrong movement p, expected  -  \n");
+        printf("\nError, wrong movement k, expected  -  \n");
         return 2;
     }
-    if (Board[tx][ty] == 'k' || Board[tx][ty] == 'k' || Board[tx][ty] == 'q'
+    if (Board[tx][ty] != ' ' && m == '-') {
+        printf("\nError, wrong movement k, expected  x  \n");
+        return 4;
+    }
+    if (Board[tx][ty] == 'k' || Board[tx][ty] == 'p' || Board[tx][ty] == 'q'
         || Board[tx][ty] == 'n' || Board[tx][ty] == 'r'
         || Board[tx][ty] == 'b') {
-        printf("\nError, wrong movement p, attacking teammate \n");
+        printf("\nError, wrong movement k, attacking teammate \n");
         return 3;
     }
     return 0;
@@ -161,7 +193,11 @@ int Queen(char Board[8][8], int fx, int fy, int tx, int ty, char m)
         printf("\nError, wrong movement q, expected  -  \n");
         return 2;
     }
-    if (Board[tx][ty] == 'k' || Board[tx][ty] == 'k' || Board[tx][ty] == 'q'
+    if (Board[tx][ty] != ' ' && m == '-') {
+        printf("\nError, wrong movement q, expected  x  \n");
+        return 4;
+    }
+    if (Board[tx][ty] == 'k' || Board[tx][ty] == 'p' || Board[tx][ty] == 'q'
         || Board[tx][ty] == 'n' || Board[tx][ty] == 'r'
         || Board[tx][ty] == 'b') {
         printf("\nError, wrong movement q, attacking teammate \n");
@@ -173,13 +209,18 @@ int Knight(char Board[8][8], int fx, int fy, int tx, int ty, char m)
 {
     if (Board[fx][fy] != 'n') {
         printf("\nError, wrong figure, expected n\n");
+
         return 1;
     }
     if (Board[tx][ty] == ' ' && m == 'x') {
         printf("\nError, wrong movement n, expected  -  \n");
         return 2;
     }
-    if (Board[tx][ty] == 'k' || Board[tx][ty] == 'k' || Board[tx][ty] == 'q'
+    if (Board[tx][ty] != ' ' && m == '-') {
+        printf("\nError, wrong movement n, expected  x  \n");
+        return 4;
+    }
+    if (Board[tx][ty] == 'k' || Board[tx][ty] == 'p' || Board[tx][ty] == 'q'
         || Board[tx][ty] == 'n' || Board[tx][ty] == 'r'
         || Board[tx][ty] == 'b') {
         printf("\nError, wrong movement n, attacking teammate \n");
@@ -197,7 +238,11 @@ int Bishop(char Board[8][8], int fx, int fy, int tx, int ty, char m)
         printf("\nError, wrong movement b, expected  -  \n");
         return 2;
     }
-    if (Board[tx][ty] == 'k' || Board[tx][ty] == 'k' || Board[tx][ty] == 'q'
+    if (Board[tx][ty] != ' ' && m == '-') {
+        printf("\nError, wrong movement b, expected  x  \n");
+        return 4;
+    }
+    if (Board[tx][ty] == 'k' || Board[tx][ty] == 'p' || Board[tx][ty] == 'q'
         || Board[tx][ty] == 'n' || Board[tx][ty] == 'r'
         || Board[tx][ty] == 'b') {
         printf("\nError, wrong movement b, attacking teammate \n");
@@ -215,7 +260,11 @@ int Rook(char Board[8][8], int fx, int fy, int tx, int ty, char m)
         printf("\nError, wrong movement r, expected  -  \n");
         return 2;
     }
-    if (Board[tx][ty] == 'k' || Board[tx][ty] == 'k' || Board[tx][ty] == 'q'
+    if (Board[tx][ty] != ' ' && m == '-') {
+        printf("\nError, wrong movement r, expected  x  \n");
+        return 4;
+    }
+    if (Board[tx][ty] == 'k' || Board[tx][ty] == 'p' || Board[tx][ty] == 'q'
         || Board[tx][ty] == 'n' || Board[tx][ty] == 'r'
         || Board[tx][ty] == 'b') {
         printf("\nError, wrong movement r, attacking teammate \n");
